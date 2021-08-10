@@ -1,7 +1,7 @@
 version: "3.3"
 services: 
   ngnixapp:
-     image: swamipeddineni/ngnix:latest
+     image: swamipeddineni/ngnix:${buildNumber}
      ports:
     - 8081:80
   networks:
