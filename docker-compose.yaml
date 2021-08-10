@@ -1,7 +1,7 @@
 version: "3.3"
 services:
  nginx:
-   image: swamipeddineni/nginx:${buildNumber}
+   image: swamipeddineni/nginx:latest
    ports:
    - 8081:80
    networks:
