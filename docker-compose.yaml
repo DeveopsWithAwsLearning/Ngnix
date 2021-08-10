@@ -1,13 +1,11 @@
 version: '3.3'
 services:
-  ngnixapp:
-    image: 'swamipeddineni/ngnix:latest'
+  nginxapp:
+    image: 'swamipeddineni/nginx:latest'
     ports:
       - '8081:80'
     networks:
-      - ngnixnetwork
+      - nginxnetwork
 networks:
-  ngnixnetwork:
+  nginxnetwork:
     driver: bridge
-
-
