@@ -23,13 +23,16 @@ node('master'){
   }
     }
 	stage("Slack Notifications"){
-	        slackSend channel: '#jenkinsnotifications',
-	        color: 'Good', 
+		slackSend baseUrl: 'https://hooks.slack.com/services/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/', 
+		botUser: true, 
+		channel: '#jenkinsnotifications', 
+		color: 'Good', 
 		failOnError: true, 
 		message: 'Build is successfull', 
-		teamDomain: 'amdocsnotifications', 
-		tokenCredentialId: 'Slack_Id'
-}
+		notifyCommitters: true, 
+		teamDomain: 'admocsnotifications', 
+		tokenCredentialId: 'Slack_Id', username: 'Siva Peddineni'
+	        }
 
 
 }
