@@ -16,12 +16,20 @@ node('master'){
     }
     stage("Deploy Appl"){
         sshagent(['Docker_Dep_SSH']) {
-            sh 'scp -o StrictHostKeyChecking=no  docker-compose.yaml ubuntu@13.127.182.141:'
-			sh "ssh -o StrictHostKeyChecking=no ubuntu@13.127.182.141 docker rm -f ngnixcontainer || true"
-            sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.127.182.141 docker-compose up -d'
+            sh 'scp -o StrictHostKeyChecking=no  docker-compose.yaml ubuntu@13.233.255.3:'
+	    sh "ssh -o StrictHostKeyChecking=no ubuntu@13.233.255.3 docker rm -f ngnixcontainer || true"
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@13.233.255.3 docker-compose up -d'
   
-    
-}
+  }
     }
+	stage("Slack Notifications"){
+	        slackSend channel: '#jenkinsnotifications',
+	        color: 'Good', 
+		failOnError: true, 
+		message: 'Build is successfull', 
+		teamDomain: 'amdocsnotifications', 
+		tokenCredentialId: 'Slack_Id'
+}
+
 
 }
